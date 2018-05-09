@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class ConnectionScreen {
 
@@ -89,6 +90,7 @@ public class ConnectionScreen {
 					frame.dispose();
 					SelectionScreen window = new SelectionScreen();
 					window.frame.setVisible(true);
+					System.out.println("Connection Sucessfull");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					System.out.println("Connection Error");
@@ -98,6 +100,9 @@ public class ConnectionScreen {
 
 			}
 		});
+		
+		JLabel lblTheater = new JLabel("Theater");
+		lblTheater.setFont(new Font("Arial", Font.PLAIN, 30));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -113,19 +118,24 @@ public class ConnectionScreen {
 										.addComponent(lblUrl))
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(urltxt, GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+										.addComponent(urltxt, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
 										.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 											.addComponent(passtxt, Alignment.LEADING)
 											.addComponent(usertxt, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(182)
-							.addComponent(btnConectar, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(btnConectar, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(189)
+							.addComponent(lblTheater)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(74)
+					.addGap(21)
+					.addComponent(lblTheater)
+					.addGap(39)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUrl)
 						.addComponent(urltxt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -143,5 +153,4 @@ public class ConnectionScreen {
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
-
 }

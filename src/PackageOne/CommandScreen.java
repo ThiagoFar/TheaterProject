@@ -3,10 +3,15 @@ package PackageOne;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,6 +23,8 @@ import thiago.theater.control.ConecBanco;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -27,10 +34,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 
 public class CommandScreen {
+	
+	
 
+	  
+	 
+		
 	protected JFrame frame;
 	private JTextField textField;
 	private JTable table;
@@ -48,7 +61,12 @@ public class CommandScreen {
 	}
 	
 	
+   
+    	
+    	  
 
+    	 
+    
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -131,6 +149,24 @@ public class CommandScreen {
 		
 		table = new JTable();
 		
+		JButton btnViewModel = new JButton("View Model");
+		btnViewModel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+					JFrame fj = new JFrame();
+					JLabel img = new JLabel();
+					img.setIcon(new ImageIcon(CommandScreen.class.getResource("/PackageOne/model.jpg")));
+				 
+					fj.setSize(1000,900);
+					fj.add(img);
+					fj.setLocationRelativeTo(null);
+				    fj.setVisible(true);
+			
+				
+			}
+		});
+		
 		
 		
 		
@@ -140,15 +176,18 @@ public class CommandScreen {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lblCustomselect)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-							.addComponent(btnExecute))
-						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(156)
-							.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(btnViewModel)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblCustomselect)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textField, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE)))
+							.addPreferredGap(ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+							.addComponent(btnExecute)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -159,11 +198,12 @@ public class CommandScreen {
 						.addComponent(lblCustomselect)
 						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnExecute))
-					.addPreferredGap(ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+					.addComponent(btnViewModel)
+					.addGap(8)
 					.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
 					.addGap(80))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
-
 }
