@@ -59,9 +59,9 @@ public class ConnectionScreen {
 		
 		JLabel lblUrl = new JLabel("URL:");
 		
-		JLabel lblUsurio = new JLabel("Usu\u00E1rio:");
+		JLabel lblUsurio = new JLabel("User:");
 		
-		JLabel lblSenha = new JLabel("Senha:");
+		JLabel lblSenha = new JLabel("Pass:");
 		
 		usertxt = new JTextField();
 		usertxt.setText("ThiagoFar");
@@ -76,7 +76,7 @@ public class ConnectionScreen {
 		
 		
 		
-		JButton btnConectar = new JButton("Conectar");
+		JButton btnConectar = new JButton("Connect");
 		btnConectar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				

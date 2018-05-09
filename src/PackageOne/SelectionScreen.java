@@ -33,7 +33,7 @@ public class SelectionScreen {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		
-		JButton btnSelect = new JButton("SELECT");
+		JButton btnSelect = new JButton("Execute Custom Query");
 		btnSelect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
@@ -45,16 +45,16 @@ public class SelectionScreen {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(154)
+					.addGap(132)
 					.addComponent(btnSelect)
-					.addContainerGap(191, Short.MAX_VALUE))
+					.addContainerGap(159, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(136, Short.MAX_VALUE)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(227, Short.MAX_VALUE)
 					.addComponent(btnSelect)
-					.addGap(102))
+					.addContainerGap())
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
