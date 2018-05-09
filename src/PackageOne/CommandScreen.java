@@ -47,6 +47,7 @@ public class CommandScreen {
 	protected JFrame frame;
 	private JTextField textField;
 	private JTable table;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -79,7 +80,8 @@ public class CommandScreen {
 		
 		textField = new JTextField();
 		textField.setColumns(10);
-		JButton btnExecute = new JButton("Execute");
+		JButton btnExecute = new JButton("");
+		btnExecute.setIcon(new ImageIcon(CommandScreen.class.getResource("/PackageOne/raio.png")));
 		btnExecute.addActionListener(new ActionListener() {
 
 		
@@ -159,13 +161,33 @@ public class CommandScreen {
 					img.setIcon(new ImageIcon(CommandScreen.class.getResource("/PackageOne/model.jpg")));
 				 
 					fj.setSize(1000,900);
-					fj.add(img);
+					fj.getContentPane().add(img);
 					fj.setLocationRelativeTo(null);
 				    fj.setVisible(true);
 			
 				
 			}
 		});
+		
+		JLabel lblModifydata = new JLabel("ModifyingData:");
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		
+		JButton btnExecute_1 = new JButton("");
+		btnExecute_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					ConecBanco.getInstance().executaUpdate(textField_1.getText());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		btnExecute_1.setIcon(new ImageIcon(CommandScreen.class.getResource("/PackageOne/raio.png")));
 		
 		
 		
@@ -177,31 +199,47 @@ public class CommandScreen {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(156)
-							.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE))
+							.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnViewModel))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(btnViewModel)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblCustomselect)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblCustomselect)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE)))
-							.addPreferredGap(ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-							.addComponent(btnExecute)))
-					.addContainerGap())
+									.addGap(10)
+									.addComponent(btnExecute))
+								.addComponent(lblModifydata)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(10)
+									.addComponent(btnExecute_1)))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(textField_1)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(104, GroupLayout.PREFERRED_SIZE))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(58)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCustomselect)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnExecute))
-					.addPreferredGap(ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-					.addComponent(btnViewModel)
-					.addGap(8)
-					.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblCustomselect)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnExecute))
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
+					.addGap(26)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblModifydata)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnExecute_1)))
+					.addGap(34)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnViewModel))
 					.addGap(80))
 		);
 		frame.getContentPane().setLayout(groupLayout);

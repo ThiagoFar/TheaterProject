@@ -77,7 +77,10 @@ public class ConecBanco {
         }
         fechaConec();
     }
-    
+    public void executaUpdate(String sql) throws SQLException{
+    Concta();
+	 stmt.executeUpdate(sql);
+    }
     public void setArrays() {
     	columnNames.clear();
     	data.clear();
