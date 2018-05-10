@@ -36,6 +36,7 @@ import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import javax.swing.JSeparator;
 
 
 public class CommandScreen {
@@ -74,7 +75,7 @@ public class CommandScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 303);
+		frame.setBounds(100, 100, 500, 350);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		JLabel lblCustomselect = new JLabel("CustomSelect:");
@@ -191,6 +192,18 @@ public class CommandScreen {
 		btnExecute_1.setIcon(new ImageIcon(CommandScreen.class.getResource("/PackageOne/raio.png")));
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				SelectionScreen window = new SelectionScreen();
+				window.frame.setVisible(true);
+			}
+		});
+		
+		JSeparator separator = new JSeparator();
+		
+		JLabel lblCustomQuerys = new JLabel("Custom Querys");
+		lblCustomQuerys.setFont(new Font("Arial", Font.PLAIN, 30));
 		
 		
 		
@@ -201,55 +214,68 @@ public class CommandScreen {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(156)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(45)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+												.addGroup(groupLayout.createSequentialGroup()
+													.addGap(10)
+													.addComponent(btnExecute_1))
+												.addComponent(lblModifydata))
+											.addGap(18)
+											.addComponent(textField_1, 239, 239, 239))
+										.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+												.addComponent(lblCustomselect)
+												.addGroup(groupLayout.createSequentialGroup()
+													.addGap(10)
+													.addComponent(btnExecute)))
+											.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+												.addComponent(lblCustomQuerys)
+												.addComponent(textField, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE)))))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(112)
+									.addComponent(separator, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)))
+							.addGap(286)
 							.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(10)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(10)
-									.addComponent(btnExecute))
-								.addComponent(lblCustomselect)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(10)
-									.addComponent(btnExecute_1))
-								.addComponent(lblModifydata))
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_1, 239, 239, 239)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(94, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(134, Short.MAX_VALUE)
-					.addComponent(btnViewModel)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-					.addGap(120))
+							.addGap(166)
+							.addComponent(btnViewModel)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(42)
+					.addGap(10)
+					.addComponent(lblCustomQuerys)
+					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblCustomselect)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnExecute)))
-					.addGap(26)
+							.addComponent(btnExecute))
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblModifydata)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnExecute_1)))
-					.addGap(52)
+							.addComponent(btnExecute_1))
+						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
+					.addGap(46)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
+						.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnBack)
-						.addComponent(btnViewModel))
-					.addGap(18)
-					.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
-					.addGap(80))
+						.addComponent(btnViewModel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnBack))
+					.addGap(46))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
