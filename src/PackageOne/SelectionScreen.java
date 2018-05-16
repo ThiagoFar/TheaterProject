@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import forms.AddMovie;
+import forms.CreateSession;
+import forms.PurchaseTicket;
 import forms.RegisterClient;
 import theaterControl.ConectionControl;
 
@@ -138,85 +141,83 @@ public class SelectionScreen {
 		JButton btnCreateNew = new JButton("Create new Session");
 		btnCreateNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				CreateSession form = new CreateSession();
+				form.frame.setVisible(true);
 			}
 		});
 		
 		JButton btnPurshase = new JButton("Purchase Ticket");
-		
-		JButton btnSeeClientTable = new JButton("See Client Table");
-		btnSeeClientTable.addActionListener(new ActionListener() {
+		btnPurshase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String comand="select * from Cliente";
-				visualizar(comand);
-				
-			}
-		});
-		
-		JButton btnSeeSessionTable = new JButton("See Session Table");
-		btnSeeSessionTable.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String comand="select * from Sessao";
-				visualizar(comand);
-				
-			}
-		});
-		
-		JButton btnSeeMovieTable = new JButton("See Movie Table");
-		btnSeeMovieTable.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String comand="select * from Filme";
-				visualizar(comand);
-				
-			}
-		});
-		
-		JButton btnSeeTicketTable = new JButton("See Ticket Table");
-		btnSeeTicketTable.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String comand="select * from Ingresso";
-				visualizar(comand);
-				
+				frame.dispose();
+				PurchaseTicket form = new PurchaseTicket();
+				form.frame.setVisible(true);
 			}
 		});
 		
 		JButton btnAddNew = new JButton("Add new Movie");
+		btnAddNew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				AddMovie form = new AddMovie();
+				form.frame.setVisible(true);
+			}
+		});
 		
 		JSeparator separator = new JSeparator();
 		
 		JSeparator separator_1 = new JSeparator();
+		
+		JButton btnView = new JButton("View 01");
+		btnView.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String comand="select * from Valor_Pago_Por_Cliente";
+				visualizar(comand);
+				
+			}
+		});
+		
+		JButton btnView_1 = new JButton("View 02");
+		
+		JButton btnView_2 = new JButton("View 03");
+		
+		JButton btnView_3 = new JButton("View 04");
+		
+		JSeparator separator_2 = new JSeparator();
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(174, Short.MAX_VALUE)
-					.addComponent(btnSelect)
-					.addGap(217))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(72)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(btnPurshase, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnAddNew, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnCreateNew, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(btnSeeSessionTable, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnSeeMovieTable, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnSeeTicketTable, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnSeeClientTable, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addGap(145))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(205)
-					.addComponent(lblFormulrios)
-					.addContainerGap(245, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(132)
-					.addComponent(separator, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(178, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(120)
-					.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, 254, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(160, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(205)
+							.addComponent(lblFormulrios))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(70)
+							.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(186)
+							.addComponent(btnSelect))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(120)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(btnPurshase, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnAddNew, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnCreateNew, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnView_1)
+								.addComponent(btnView)
+								.addComponent(btnView_2)
+								.addComponent(btnView_3)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(98)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, 311, GroupLayout.PREFERRED_SIZE)
+								.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, 311, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(125, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -228,24 +229,26 @@ public class SelectionScreen {
 					.addGap(28)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnNewButton)
-						.addComponent(btnSeeClientTable))
+						.addComponent(btnView))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnCreateNew)
-						.addComponent(btnSeeSessionTable))
+						.addComponent(btnView_1))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnSeeMovieTable)
-						.addComponent(btnAddNew))
+						.addComponent(btnAddNew)
+						.addComponent(btnView_2))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnPurshase)
-						.addComponent(btnSeeTicketTable))
-					.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+						.addComponent(btnView_3))
+					.addPreferredGap(ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+					.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(15)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnSelect)
-					.addGap(24))
+					.addGap(19))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
