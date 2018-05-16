@@ -140,7 +140,7 @@ public class CommandScreen {
 			        jf.getContentPane().add( buttonPanel, BorderLayout.SOUTH );
 			        
 			        jf.pack();
-			        
+			        jf.setLocationRelativeTo(null);
 			        jf.setVisible(true);
 			        
 			        ConectionControl.getInstance().setArrays();
