@@ -1,4 +1,4 @@
-package thiago.theater.control;
+package theaterControl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,16 +8,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class ConecBanco {
+public class ConectionControl {
 	
-	private static ConecBanco uniqueInstance;
+	private static ConectionControl uniqueInstance;
 
-	private ConecBanco() {
+	private ConectionControl() {
 	}
 
-	public static synchronized ConecBanco getInstance() {
+	public static synchronized ConectionControl getInstance() {
 		if (uniqueInstance == null)
-			uniqueInstance = new ConecBanco();
+			uniqueInstance = new ConectionControl();
 
 		return uniqueInstance;
 	}

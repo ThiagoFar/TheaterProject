@@ -8,7 +8,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import thiago.theater.control.ConecBanco;
+import theaterControl.ConectionControl;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -82,11 +82,11 @@ public class ConnectionScreen {
 				
 				String pass = new String(passtxt.getPassword());
 				
-				ConecBanco.getInstance().setDadosLogin(urltxt.getText(), usertxt.getText(), pass);
+				ConectionControl.getInstance().setDadosLogin(urltxt.getText(), usertxt.getText(), pass);
 				
 				try {
-					ConecBanco.getInstance().Concta();
-					ConecBanco.getInstance().fechaConec();
+					ConectionControl.getInstance().Concta();
+					ConectionControl.getInstance().fechaConec();
 					frame.dispose();
 					SelectionScreen window = new SelectionScreen();
 					window.frame.setVisible(true);

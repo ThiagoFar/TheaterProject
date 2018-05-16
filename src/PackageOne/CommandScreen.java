@@ -19,7 +19,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import thiago.theater.control.ConecBanco;
+import theaterControl.ConectionControl;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -91,7 +91,7 @@ public class CommandScreen {
 				JFrame jf = new JFrame();
 				
 				try {
-					ConecBanco.getInstance().executaComando(textField.getText());
+					ConectionControl.getInstance().executaComando(textField.getText());
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -100,9 +100,9 @@ public class CommandScreen {
 				 Vector columnNamesVector = new Vector();
 			        Vector dataVector = new Vector();
 
-			        for (int i = 0; i < ConecBanco.getInstance().RetornaData().size(); i++)
+			        for (int i = 0; i < ConectionControl.getInstance().RetornaData().size(); i++)
 			        {
-			            ArrayList subArray = (ArrayList)ConecBanco.getInstance().RetornaData().get(i);
+			            ArrayList subArray = (ArrayList)ConectionControl.getInstance().RetornaData().get(i);
 			            Vector subVector = new Vector();
 			            for (int j = 0; j < subArray.size(); j++)
 			            {
@@ -111,8 +111,8 @@ public class CommandScreen {
 			            dataVector.add(subVector);
 			        }
 
-			        for (int i = 0; i < ConecBanco.getInstance().retornaColumnNames().size(); i++ )
-			            columnNamesVector.add(ConecBanco.getInstance().retornaColumnNames().get(i));
+			        for (int i = 0; i < ConectionControl.getInstance().retornaColumnNames().size(); i++ )
+			            columnNamesVector.add(ConectionControl.getInstance().retornaColumnNames().get(i));
 
 			        //  Create table with database data    
 			        JTable table = new JTable(dataVector, columnNamesVector)
@@ -143,7 +143,7 @@ public class CommandScreen {
 			        
 			        jf.setVisible(true);
 			        
-			        ConecBanco.getInstance().setArrays();
+			        ConectionControl.getInstance().setArrays();
 				
 			}
 			
@@ -181,7 +181,7 @@ public class CommandScreen {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				try {
-					ConecBanco.getInstance().executaUpdate(textField_1.getText());
+					ConectionControl.getInstance().executaUpdate(textField_1.getText());
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

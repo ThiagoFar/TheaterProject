@@ -7,11 +7,11 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+
 import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
-
 public class SelectionScreen {
 
 	protected JFrame frame;
@@ -51,6 +51,12 @@ public class SelectionScreen {
 		JButton btnNewButton = new JButton("Register Client");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				RegisterClient form = new RegisterClient();
+				form.frame.setVisible(true);
+				
+				
+				
 			}
 		});
 		
@@ -75,10 +81,6 @@ public class SelectionScreen {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(169, Short.MAX_VALUE)
-					.addComponent(lblFormulrios)
-					.addGap(281))
-				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap(174, Short.MAX_VALUE)
 					.addComponent(btnSelect)
 					.addGap(217))
@@ -97,6 +99,10 @@ public class SelectionScreen {
 						.addComponent(btnSeeTicketTable, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnSeeClientTable, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGap(145))
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(205)
+					.addComponent(lblFormulrios)
+					.addContainerGap(245, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -119,7 +125,7 @@ public class SelectionScreen {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnPurshase, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnSeeTicketTable))
-					.addPreferredGap(ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
 					.addComponent(btnSelect)
 					.addGap(24))
 		);
