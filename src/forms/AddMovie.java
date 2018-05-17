@@ -14,11 +14,14 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AddMovie {
 
@@ -102,6 +105,15 @@ public class AddMovie {
 		JLabel lblDuration_1 = new JLabel("Duration:");
 		
 		duracao = new JTextField();
+		duracao.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				
+			if(duracao.getText().length()==2) {
+				duracao.setText(duracao.getText()+":");
+			}
+			}
+		});
 		duracao.setColumns(10);
 		
 		JLabel lblAddMovie = new JLabel("Add Movie");
@@ -115,7 +127,7 @@ System.out.println(comand);
 				
 				try {
 					ConectionControl.getInstance().executaUpdate(comand);
-					System.out.println("Execution Sucess");
+					JOptionPane.showMessageDialog(null, "Execution Sucess");
 				} catch (SQLException ez) {
 					// TODO Auto-generated catch block
 					ez.printStackTrace();

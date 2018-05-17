@@ -2,9 +2,12 @@ package forms;
 
 import java.awt.EventQueue;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -20,6 +23,8 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class RegisterClient {
 
@@ -32,7 +37,7 @@ public class RegisterClient {
 	private JTextField text_email;
 	private JLabel lblPhone;
 	private JTextField text_numero;
-
+    private int phonecount;
 	/**
 	 * Launch the application.
 	
@@ -76,26 +81,59 @@ public class RegisterClient {
 		lblPhone = new JLabel("Phone:");
 		
 		
+		
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String comand= "INSERT INTO `Cliente` VALUES (null,'"+text_email.getText()+"','"+text_senha.getText()+"','"+text_primeiroNome.getText()+"','"+text_ultimoNome.getText()+"','"+text_numero.getText()+"')";
-				
+				// ValidaEmail
+				String phone = text_numero.getText();
+				phone=phone.substring(1, 3)+phone.substring(4);
+				String email = text_email.getText();
+				 InternetAddress emailAddr;
+				 boolean emailValid = true;
 				try {
-					ConectionControl.getInstance().executaUpdate(comand);
-					System.out.println("Execution Sucess");
-				} catch (SQLException ez) {
+					emailAddr = new InternetAddress(email);
+					 emailAddr.validate();
+					
+						
+					
+				} catch (AddressException e1) {
+					emailValid=false;
+					JOptionPane.showMessageDialog(null, "Email typed is not valid");
 					// TODO Auto-generated catch block
-					ez.printStackTrace();
+					e1.printStackTrace();
 				}
+				//validaSenha
+				boolean passValid=false;
+				if((text_senha.getText().length()>6)) {
+					passValid=true;
+				}else {
+					JOptionPane.showMessageDialog(null, "Password must contain a minimum of six digits");
+				}
+			      
 				
+				String comand= "INSERT INTO `Cliente` VALUES (null,'"+text_email.getText()+"','"+text_senha.getText()+"','"+text_primeiroNome.getText()+"','"+text_ultimoNome.getText()+"','"+phone+"')";
+				
+				
+				boolean allValid=false;
+				if (emailValid && passValid) {
+					allValid=true;
+				}
+				if(allValid) {
+					try {
+						ConectionControl.getInstance().executaUpdate(comand);
+						JOptionPane.showMessageDialog(null, "Execution Sucess");
+					} catch (SQLException ez) {
+						// TODO Auto-generated catch block
+						ez.printStackTrace();
+					}
 				frame.dispose();
 				SelectionScreen window = new SelectionScreen();
 				
 				String comand2="select * from Cliente";
 			 window.visualizar(comand2);
 				window.frame.setVisible(true);
-				
+				}
 			}
 		});
 		
@@ -115,7 +153,30 @@ public class RegisterClient {
 		lblRegisterClient.setFont(new Font("Arial", Font.PLAIN, 30));
 		
 		text_numero = new JTextField();
+		text_numero.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				
+				phonecount++;
+				
+				 if(text_numero.getText().length()==0) {
+					 text_numero.setText("("+text_numero.getText());
+					 
+				 }
+				
+			 if(text_numero.getText().length()==3) {
+				 text_numero.setText(text_numero.getText()+")");
+				 
+			 }
+				
+			
+			}
+		});
+		
+			
+		
 		text_numero.setColumns(10);
+		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

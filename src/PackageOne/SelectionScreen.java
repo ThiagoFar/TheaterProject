@@ -27,6 +27,7 @@ import javax.swing.JTable;
 
 import java.awt.Font;
 import javax.swing.JSeparator;
+import javax.swing.ImageIcon;
 public class SelectionScreen {
 	
 	public void visualizar(String comand) {
@@ -123,7 +124,7 @@ public class SelectionScreen {
 			}
 		});
 		
-		JLabel lblFormulrios = new JLabel("Forms");
+		JLabel lblFormulrios = new JLabel("Forms and Views");
 		lblFormulrios.setFont(new Font("Arial", Font.PLAIN, 30));
 		
 		JButton btnNewButton = new JButton("Register Client");
@@ -169,7 +170,9 @@ public class SelectionScreen {
 		
 		JSeparator separator_1 = new JSeparator();
 		
-		JButton btnView = new JButton("View 01");
+		JButton btnView = new JButton("");
+		btnView.setToolTipText("View: Dinheiro Arrecadado Por Cliente");
+		btnView.setIcon(new ImageIcon(SelectionScreen.class.getResource("/PackageOne/coins.png")));
 		btnView.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String comand="select * from Valor_Pago_Por_Cliente";
@@ -178,11 +181,29 @@ public class SelectionScreen {
 			}
 		});
 		
-		JButton btnView_1 = new JButton("View 02");
+		JButton btnView_1 = new JButton("");
+		btnView_1.setToolTipText("Clientes que nunca fizeram reserva");
+		btnView_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String comand="select * from Clientes_Nunca_Fizeram_Reserva";
+				visualizar(comand);
+			}
+		});
+		btnView_1.setIcon(new ImageIcon(SelectionScreen.class.getResource("/PackageOne/tickets.png")));
 		
-		JButton btnView_2 = new JButton("View 03");
+		JButton btnView_2 = new JButton("");
+		btnView_2.setToolTipText("View: Filme visto por Cliente");
+		btnView_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String comand="select * from Filme_Visto_Por_Cliente";
+				visualizar(comand);
+			}
+		});
+		btnView_2.setIcon(new ImageIcon(SelectionScreen.class.getResource("/PackageOne/popcorn.png")));
+		btnView_2.setSelectedIcon(null);
 		
-		JButton btnView_3 = new JButton("View 04");
+		JButton btnView_3 = new JButton("");
+		btnView_3.setIcon(new ImageIcon(SelectionScreen.class.getResource("/PackageOne/video-camera.png")));
 		
 		JSeparator separator_2 = new JSeparator();
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
@@ -191,14 +212,8 @@ public class SelectionScreen {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(205)
-							.addComponent(lblFormulrios))
-						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(70)
 							.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(186)
-							.addComponent(btnSelect))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(120)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
@@ -216,7 +231,13 @@ public class SelectionScreen {
 							.addGap(98)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, 311, GroupLayout.PREFERRED_SIZE)
-								.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, 311, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, 311, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(143)
+							.addComponent(lblFormulrios))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(180)
+							.addComponent(btnSelect)))
 					.addContainerGap(125, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
@@ -242,7 +263,7 @@ public class SelectionScreen {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnPurshase)
 						.addComponent(btnView_3))
-					.addPreferredGap(ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
 					.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(15)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
