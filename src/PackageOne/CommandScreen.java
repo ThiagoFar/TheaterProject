@@ -160,7 +160,7 @@ public class CommandScreen {
 				
 					JFrame fj = new JFrame();
 					JLabel img = new JLabel();
-					img.setIcon(new ImageIcon(CommandScreen.class.getResource("/PackageOne/model.jpg")));
+					img.setIcon(new ImageIcon(CommandScreen.class.getResource("/PackageOne/Model.png")));
 				 
 					fj.setSize(1000,900);
 					fj.getContentPane().add(img);

@@ -203,6 +203,12 @@ public class SelectionScreen {
 		btnView_2.setSelectedIcon(null);
 		
 		JButton btnView_3 = new JButton("");
+		btnView_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String comand="select * from Ingressos_Vendidos";
+				visualizar(comand);
+			}
+		});
 		btnView_3.setIcon(new ImageIcon(SelectionScreen.class.getResource("/PackageOne/video-camera.png")));
 		
 		JSeparator separator_2 = new JSeparator();
